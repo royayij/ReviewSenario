@@ -25,6 +25,12 @@ class ExtendedList(list):
         return other
 
 
-e = ExtendedList((1, 2, 3))
-b = ExtendedList((3, 4, 5))
-print(b + e)
+class TypeList(ExtendedList):
+    def __eq__(self, other):
+        return True if self[-1] == other[-1] else False
+
+    def __ne__(self, other):
+        return True if self[-1] != other[-1] else False
+
+
+
