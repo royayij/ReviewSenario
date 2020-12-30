@@ -24,6 +24,20 @@ class ExtendedList(list):
         other.extend(self)
         return other
 
+    @staticmethod
+    def next_val(ex_list):
+        result = iter(ex_list)
+        while True:
+            try:
+                data = next(result)
+            except StopIteration:
+                break
+            else:
+                try:
+                    yield float(data)
+                except ValueError:
+                    break
+
 
 class TypeList(ExtendedList):
     def __eq__(self, other):
@@ -31,6 +45,9 @@ class TypeList(ExtendedList):
 
     def __ne__(self, other):
         return True if self[-1] != other[-1] else False
+
+
+
 
 
 
