@@ -11,7 +11,7 @@ def main():
     stream = urlopen(url)
     csv_file = csv.reader(codecs.iterdecode(stream, 'utf-8'))
     iris_lst = []
-    [iris_lst.append(ExtendedList(raw)) for raw in csv_file]
+    [iris_lst.append(ExtendedList(raw).lst) for raw in csv_file]
 
     for item in iris_lst:
         iris_value_list = []

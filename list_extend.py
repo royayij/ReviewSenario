@@ -2,27 +2,32 @@ from statistics import mean
 
 
 class ExtendedList(list):
+    def __init__(self, lst):
+        self.lst = lst
+
     def __gt__(self, other):
-        return True if mean(self) > mean(other) else False
+        return mean(self.lst) > mean(other.lst)
 
     def __lt__(self, other):
-        return True if mean(self) < mean(other) else False
+        return mean(self.lst) < mean(other.lst)
 
     def __le__(self, other):
-        return True if mean(self) <= mean(other) else False
+        return mean(self.lst) <= mean(other.lst)
 
     def __ge__(self, other):
-        return True if mean(self) >= mean(other) else False
+        return mean(self.lst) >= mean(other.lst)
 
     def __eq__(self, other):
-        return True if mean(self) == mean(other) else False
+        return  mean(self.lst) == mean(other.lst)
 
     def __ne__(self, other):
-        return True if mean(self) != mean(other) else False
+        return mean(self.lst) != mean(other.lst)
 
     def __add__(self, other):
-        other.extend(self)
-        return other
+        lst_new = []
+        lst_new.extend(self.lst)
+        lst_new.extend(other.lst)
+        return lst_new
 
     @staticmethod
     def next_val(ex_list):
@@ -41,13 +46,7 @@ class ExtendedList(list):
 
 class TypeList(ExtendedList):
     def __eq__(self, other):
-        return True if self[-1] == other[-1] else False
+        return self.lst[-1] == other.lst[-1]
 
     def __ne__(self, other):
-        return True if self[-1] != other[-1] else False
-
-
-
-
-
-
+        return self.lst[-1] != other.lst[-1]
